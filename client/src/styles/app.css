@@ -1,0 +1,18 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.App form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}

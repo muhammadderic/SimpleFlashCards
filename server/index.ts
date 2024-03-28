@@ -1,15 +1,19 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import path from "path";
+import cors from "cors";
 
 const desckRoutes = require("./routes/deckRoutes");
 import connectDB from "./config/db";
 
 const app: Express = express();
-dotenv.config();
 
 // Variable env configuration
 dotenv.config({ path: path.join(__dirname, "config", ".env") });
+
+app.use(cors({
+  origin: "*",
+}))
 
 // Connect to DB
 connectDB();
