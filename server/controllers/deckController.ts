@@ -7,7 +7,8 @@ const deckController = {
   // Get all decks
   getAllDecks: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send("Get All Decks");
+      const decks = await Deck.find();
+      res.status(200).json(decks);
     } catch (error) {
       next(error);
     }
@@ -16,7 +17,11 @@ const deckController = {
   // Get deck by ID
   getDeckById: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send("Get a deck");
+      const deck = await Deck.findById(req.params.id);
+      if (!deck) {
+        return res.status(404).json({ message: "Deck not found" });
+      }
+      res.status(200).json(deck);
     } catch (error) {
       next(error);
     }
@@ -25,7 +30,9 @@ const deckController = {
   // Create a new deck
   createDeck: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send("Create a deck");
+      const newDeck = new Deck(req.body);
+      await newDeck.save();
+      res.status(201).json({ message: "Deck saved successfully" });
     } catch (error) {
       next(error);
     }
@@ -34,7 +41,11 @@ const deckController = {
   // Update deck by ID
   updateDeck: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send("Update a deck");
+      const updatedDeck = await Deck.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!updatedDeck) {
+        return res.status(404).json({ message: "Deck not found" });
+      }
+      res.status(200).json({ message: "Deck updated successfully" });
     } catch (error) {
       next(error);
     }
@@ -43,7 +54,11 @@ const deckController = {
   // Delete deck by ID
   deleteDeck: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send("Delete a deck");
+      const deletedDeck = await Deck.findByIdAndDelete(req.params.id);
+      if (!deletedDeck) {
+        return res.status(404).json({ message: "Deck not found" });
+      }
+      res.status(200).json({ message: "Deck deleted successfully" });
     } catch (error) {
       next(error);
     }
