@@ -3,12 +3,16 @@ import dotenv from "dotenv";
 import path from "path";
 
 const desckRoutes = require("./routes/deckRoutes");
+import connectDB from "./config/db";
 
 const app: Express = express();
 dotenv.config();
 
 // Variable env configuration
 dotenv.config({ path: path.join(__dirname, "config", ".env") });
+
+// Connect to DB
+connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
