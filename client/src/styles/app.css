@@ -1,13 +1,137 @@
 .container {
   width: 800px;
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.title {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.decks {
+  display: grid;
+  width: 600px;
+  margin: 0 auto;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  color: black;
+}
+
+.deck {
+  height: 120px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 50%;
+}
+
+.deck-title-input {
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.deck-title-input:focus~.cut,
+.deck-title-input:not(:placeholder-shown)~.cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.deck-title-input:focus~.placeholder,
+.deck-title-input:not(:placeholder-shown)~.placeholder {
+  transform: translateY(-30px) translateX(10px) scale(1);
+}
+
+.deck-title-input:not(:placeholder-shown)~.placeholder {
+  color: #808097;
+}
+
+.deck-title-input:focus~.placeholder {
+  color: rgb(24, 24, 24);
+  font-weight: bold;
+}
+
+.button {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+.button:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+.button:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
+  border: 2px solid #4285f4;
 }
 
 .App form {

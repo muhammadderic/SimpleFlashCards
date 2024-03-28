@@ -26,26 +26,30 @@ function App() {
   return (
     <div className="container">
       <div className="App">
-        <h1>Your Decks</h1>
+        <h1 className="title">Your Decks</h1>
 
         <ul className="decks">
           {decks.map((deck) => (
-            <li key={deck._id}>
+            <li key={deck._id} className="deck">
               <p>{deck.title}</p>
             </li>
           ))}
         </ul>
 
-        <form onSubmit={handleCreateDeck}>
-          <label htmlFor="deck-title">Deck Title</label>
-          <input
-            type="text"
-            id="deck-title"
-            value={title}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setTitle(e.target.value);
-            }} />
-          <button>Create Deck</button>
+        <form className="deck-form" onSubmit={handleCreateDeck}>
+          <div className="input-container">
+            <input
+              id="deck-title"
+              className="deck-title-input"
+              type="text"
+              placeholder=" "
+              value={title}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setTitle(e.target.value);
+              }} />
+            <label htmlFor="deck-title" className="placeholder">Deck Title</label>
+          </div>
+          <button className="button">Create Deck</button>
         </form>
       </div>
     </div>
