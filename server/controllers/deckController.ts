@@ -78,6 +78,23 @@ const deckController = {
     } catch (error) {
       next(error);
     }
+  },
+
+  // Delete a card in a deck by ID
+  deleteCard: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const deckId = req.params.id;
+      const index = req.params.index;
+      const deck = await Deck.findById(deckId);
+      if (!deck) {
+        return res.status(404).json({ message: "not deck of this id exists" });
+      }
+      deck.cards.splice(parseInt(index), 1);
+      await deck.save();
+      res.json(deck);
+    } catch (error) {
+      next(error);
+    }
   }
 };
 

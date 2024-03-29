@@ -12,3 +12,11 @@ export async function createCard(deckId: string, text: string): Promise<TDeck> {
   });
   return r.json();
 }
+
+// api to delete a card
+export async function deleteCard(deckId: string, index: number): Promise<TDeck> {
+  const r = await fetch(`${API_URL}/decks/${deckId}/cards/${index}`, {
+    method: "DELETE"
+  })
+  return r.json();
+}

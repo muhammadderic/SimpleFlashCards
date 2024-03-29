@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDeck, TDeck } from "../utils/deckAPIs";
-import { createCard } from "../utils/cardAPIs";
+import { createCard, deleteCard } from "../utils/cardAPIs";
 import "../styles/deck.css";
 
 function Deck() {
@@ -15,6 +15,12 @@ function Deck() {
     const { cards: deckCards } = await createCard(deckId!, text);
     setCards(deckCards);
     setText("");
+  }
+
+  async function handleDeleteCard(index: number) {
+    if (!deckId) return;
+    const newCards = await deleteCard(deckId, index);
+    setCards(newCards.cards);
   }
 
   useEffect(() => {
@@ -33,6 +39,7 @@ function Deck() {
       <ul className="decks">
         {cards.map((card, index) => (
           <li className="deck" key={index}>
+            <button className="deck__delete" onClick={() => handleDeleteCard(index)}>X</button>
             <p>{card}</p>
           </li>
         ))}
