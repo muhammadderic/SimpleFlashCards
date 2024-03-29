@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles/app.css";
 import { getAllDecks, createDeck, deleteDeck, TDeck } from "./utils/deckAPIs";
 import { Link } from "react-router-dom";
-import Button from "./components/DeleteButton";
+import DeleteButton from "./components/DeleteButton";
+import SubmitButton from "./components/SubmitButton";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -38,7 +39,7 @@ function App() {
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id} className="deck">
-              <Button onClick={() => handleDeleteDeck(deck._id)} text="X" />
+              <DeleteButton onClick={() => handleDeleteDeck(deck._id)} text="X" />
               <Link to={`decks/${deck._id}`}>{deck.title}</Link>
             </li>
           ))}
@@ -57,7 +58,7 @@ function App() {
               }} />
             <label htmlFor="deck-title" className="placeholder">Deck Title</label>
           </div>
-          <button className="button">Create Deck</button>
+          <SubmitButton text="Create Deck" />
         </form>
       </div>
     </div>

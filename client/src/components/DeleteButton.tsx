@@ -5,7 +5,7 @@ interface ButtonProps {
   text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
+const DeleteButton: React.FC<ButtonProps> = ({ onClick, text }) => {
   return (
     <button type="button" className="delete-button" onClick={onClick}>
       {text}
@@ -13,4 +13,4 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
   );
 };
 
-export default Button;
+export default DeleteButton;
