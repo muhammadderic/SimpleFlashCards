@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 
-const desckRoutes = require("./routes/deckRoutes");
+const routers = require("./routes");
 import connectDB from "./config/db";
 
 const app: Express = express();
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use("/decks", desckRoutes);
+app.use("/", routers);
 
 // Error handling middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

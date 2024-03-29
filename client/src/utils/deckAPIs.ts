@@ -3,12 +3,18 @@ import { API_URL } from "./config";
 export type TDeck = {
   title: string;
   cards: string[];
-  _id: number;
+  _id: string;
 }
 
 // api to get all decks
 export async function getAllDecks(): Promise<TDeck[]> {
-  const r = await fetch(`${API_URL}/decks`);
+  const r = await fetch(`${API_URL}/decks/`);
+  return r.json();
+}
+
+// api to get a deck
+export async function getDeck(deckId: string): Promise<TDeck> {
+  const r = await fetch(`${API_URL}/decks/${deckId}`);
   return r.json();
 }
 

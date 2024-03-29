@@ -1,15 +1,9 @@
-.container {
+.Deck {
   width: 800px;
   margin: 0 auto;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.title {
+.deck__title {
   width: 100%;
   padding: 1rem 0;
   text-align: center;
@@ -24,26 +18,12 @@
   color: black;
 }
 
-.deck {
-  height: 120px;
-  position: relative;
+.deck-form {
+  margin: 2rem 0;
   display: flex;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-  background: white;
-  border: 1px solid white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-}
-
-.deck__delete {
-  padding: .5rem;
-  font-size: 10px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  border: none;
-  border-radius: 50%;
 }
 
 .input-container {
@@ -62,6 +42,11 @@
   padding: 4px 20px 0;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.deck-title-input:focus~.cut,
+.deck-title-input:not(:placeholder-shown)~.cut {
+  transform: translateY(8px);
 }
 
 .placeholder {
@@ -137,11 +122,4 @@
 .button:focus {
   outline: none;
   border: 2px solid #4285f4;
-}
-
-.App form {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
 }

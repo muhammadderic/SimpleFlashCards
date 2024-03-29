@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-
 import Deck from "../models/deckModel";
 
 // Controller methods
@@ -33,6 +32,23 @@ const deckController = {
       const newDeck = new Deck(req.body);
       await newDeck.save();
       res.status(201).json({ message: "Deck saved successfully" });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  // Create a card in a deck
+  createCard: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const deckId = req.params.id;
+      const deck = await Deck.findById(deckId);
+      if (!deck) {
+        return res.status(404).json({ message: "not deck of this id exists" });
+      }
+      const { text } = req.body;
+      deck.cards.push(text);
+      await deck.save();
+      res.json(deck);
     } catch (error) {
       next(error);
     }
