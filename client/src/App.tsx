@@ -38,7 +38,7 @@ function App() {
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id} className="deck">
-              <Button className="deck__delete" onClick={() => handleDeleteDeck(deck._id)} text="X" />
+              <Button onClick={() => handleDeleteDeck(deck._id)} text="X" />
               <Link to={`decks/${deck._id}`}>{deck.title}</Link>
             </li>
           ))}

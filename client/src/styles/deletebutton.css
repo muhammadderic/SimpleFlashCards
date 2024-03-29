@@ -1,0 +1,9 @@
+.delete-button {
+  padding: .5rem;
+  font-size: 10px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  border-radius: 50%;
+}

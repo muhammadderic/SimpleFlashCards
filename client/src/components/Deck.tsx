@@ -40,7 +40,7 @@ function Deck() {
       <ul className="decks">
         {cards.map((card, index) => (
           <li className="deck" key={index}>
-            <Button className="deck__delete" onClick={() => handleDeleteCard(index)} text="X" />
+            <Button onClick={() => handleDeleteCard(index)} text="X" />
             <p>{card}</p>
           </li>
         ))}
