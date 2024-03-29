@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles/app.css";
 import { getAllDecks, createDeck, deleteDeck, TDeck } from "./utils/deckAPIs";
 import { Link } from "react-router-dom";
+import Button from "./components/DeleteButton";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -37,7 +38,7 @@ function App() {
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id} className="deck">
-              <button className="deck__delete" onClick={() => handleDeleteDeck(deck._id)}>X</button>
+              <Button className="deck__delete" onClick={() => handleDeleteDeck(deck._id)} text="X" />
               <Link to={`decks/${deck._id}`}>{deck.title}</Link>
             </li>
           ))}

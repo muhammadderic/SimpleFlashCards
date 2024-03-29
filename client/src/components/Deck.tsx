@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDeck, TDeck } from "../utils/deckAPIs";
 import { createCard, deleteCard } from "../utils/cardAPIs";
+import Button from "./DeleteButton";
 import "../styles/deck.css";
 
 function Deck() {
@@ -39,7 +40,7 @@ function Deck() {
       <ul className="decks">
         {cards.map((card, index) => (
           <li className="deck" key={index}>
-            <button className="deck__delete" onClick={() => handleDeleteCard(index)}>X</button>
+            <Button className="deck__delete" onClick={() => handleDeleteCard(index)} text="X" />
             <p>{card}</p>
           </li>
         ))}
