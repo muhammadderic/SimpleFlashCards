@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/app.css";
-import { getAllDecks, createDeck, TDeck } from "./utils/deckAPIs";
+import { getAllDecks, createDeck, deleteDeck, TDeck } from "./utils/deckAPIs";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -13,6 +13,11 @@ function App() {
     setDecks([...decks, deck]);
     setTitle("");
     window.location.reload();
+  }
+
+  async function handleDeleteDeck(deckId: string) {
+    await deleteDeck(deckId);
+    setDecks(decks.filter(deck => deck._id !== deckId));
   }
 
   useEffect(() => {
@@ -31,6 +36,7 @@ function App() {
         <ul className="decks">
           {decks.map((deck) => (
             <li key={deck._id} className="deck">
+              <button className="deck__delete" onClick={() => handleDeleteDeck(deck._id)}>X</button>
               <p>{deck.title}</p>
             </li>
           ))}

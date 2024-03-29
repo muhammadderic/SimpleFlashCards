@@ -25,3 +25,10 @@ export async function createDeck(title: string) {
   })
   return r.json();
 }
+
+// api to delete a deck
+export async function deleteDeck(deckId: string) {
+  await fetch(`${API_URL}/decks/${deckId}`, {
+    method: "DELETE",
+  })
+}
